@@ -1,0 +1,3 @@
+*.cache
+*.qtc_clangd
+Makefile
