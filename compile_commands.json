@@ -1,0 +1,36 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-pipe",
+      "-g",
+      "-std=gnu++1z",
+      "-Wall",
+      "-Wextra",
+      "-D_REENTRANT",
+      "-fPIC",
+      "-DQT_QML_DEBUG",
+      "-DQT_WIDGETS_LIB",
+      "-DQT_GUI_LIB",
+      "-DQT_SQL_LIB",
+      "-DQT_CORE_LIB",
+      "-I../KLibrary",
+      "-I.",
+      "-I/home/detrix/Qt/6.2.4/gcc_64/include",
+      "-I/home/detrix/Qt/6.2.4/gcc_64/include/QtWidgets",
+      "-I/home/detrix/Qt/6.2.4/gcc_64/include/QtGui",
+      "-I/home/detrix/Qt/6.2.4/gcc_64/include/QtSql",
+      "-I/home/detrix/Qt/6.2.4/gcc_64/include/QtCore",
+      "-I.",
+      "-I.",
+      "-I/home/detrix/Qt/6.2.4/gcc_64/mkspecs/linux-g++",
+      "-o",
+      "AdminForm.o",
+      "../KLibrary/AdminForm.cpp"
+    ],
+    "directory": "/home/ketrix/programs/c++/KLibrary/build-KLibrary-Desktop_Qt_6_2_4_GCC_64bit-Debug",
+    "file": "/home/ketrix/programs/c++/KLibrary/KLibrary/AdminForm.cpp",
+    "output": "/home/ketrix/programs/c++/KLibrary/build-KLibrary-Desktop_Qt_6_2_4_GCC_64bit-Debug/AdminForm.o"
+  }
+]

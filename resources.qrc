@@ -1,0 +1,32 @@
+<RCC>
+    <qresource prefix="/">
+        <file>imgs/add-64.png</file>
+        <file>imgs/admin-96.png</file>
+        <file>imgs/Admin-64.png</file>
+        <file>imgs/back-96.png</file>
+        <file>imgs/background_1.jpg</file>
+        <file>imgs/background_2.jpg</file>
+        <file>imgs/background_3.jpg</file>
+        <file>imgs/books-96.png</file>
+        <file>imgs/checked-64.png</file>
+        <file>imgs/confirm-64.png</file>
+        <file>imgs/down-arrow-32.png</file>
+        <file>imgs/invisible-96.png</file>
+        <file>imgs/menu-64.png</file>
+        <file>imgs/options-list-96.png</file>
+        <file>imgs/person-64.png</file>
+        <file>imgs/person-96.png</file>
+        <file>imgs/person-add-96.png</file>
+        <file>imgs/remove-64.png</file>
+        <file>imgs/revert-64.png</file>
+        <file>imgs/search-32.png</file>
+        <file>imgs/search-96.ico</file>
+        <file>imgs/search-96.png</file>
+        <file>imgs/sort-96.png</file>
+        <file>imgs/unchecked-64.png</file>
+        <file>imgs/visible-96.png</file>
+        <file>imgs/white-abstract-background.zip</file>
+        <file>imgs/left-arrow-96.png</file>
+        <file>imgs/right-arrow-96.png</file>
+    </qresource>
+</RCC>

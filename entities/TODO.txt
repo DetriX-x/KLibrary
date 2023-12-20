@@ -1,0 +1,47 @@
+
+TRANSLATION *****
+---
+find a bugs OR
+DO IT MANUALLY!
+---
+
+CHANGE VIEW AND HANDLE THAT IN ADMIN AND CLIENT ************
+---
+ SELECT * FROM (SELECT 
+ 	b.book_id,
+    b.title,
+    array_to_string(array_agg((au.name::text || ' '::text) || au.surname::text), ', '::text) AS array_to_string,
+    ge.genre_name,
+    b.lang,
+    b.year,
+    e.edition_name,
+    b.quantity AS quant,
+    b.isbn
+ FROM books b
+     LEFT JOIN books_authors ba ON ba.book_id = b.book_id
+     LEFT JOIN authors au USING (author_id)
+     JOIN genres ge ON b.genre_id = ge.genre_id
+     JOIN editions e ON b.edition_id = e.edition_id
+ GROUP BY b.book_id, b.title, ge.genre_name, b.lang, b.year, e.edition_name, b.quantity, b.isbn) AS foo
+ WHERE foo.quant < 10
+---
+
+
+
+RENAME ENUMS *****
+GLOBAL REFACTOR***
+MAKE SEARCH IN COMBOBOXES ***
+PATTERNS *
+
+
+BETTER TRANSLATION*
+//    QTranslator translator;
+//    const QStringList uiLanguages = QLocale::system().uiLanguages();
+//    for (const QString &locale : uiLanguages) {
+//        const QString baseName = "KLibrary_" + QLocale(locale).name();
+//        if (translator.load(":/i18n/" + baseName)) {
+//            a.installTranslator(&translator);
+//            break;
+//        }
+//    }
+

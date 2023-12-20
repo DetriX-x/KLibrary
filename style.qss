@@ -1,0 +1,293 @@
+*{
+	font: 24pt "Chilanka";
+}
+
+
+QWidget#mainWidget{
+    background-image: url(:/imgs/background_1.jpg) 0 0 0 0 stretch stretch;
+}
+
+QWidget#userAcc{
+    background-image: url(:/imgs/background_3.jpg) stretch stretch;
+}
+
+QLabel#label_mainImg{
+    background-color: red;
+    border-radius: 45px;
+}
+
+QLabel#label_userImg{
+    background-color: red;
+    border-radius: 30px;
+}
+
+QFrame#mainFrame{
+	border-radius: 30px;
+}
+
+QStackedWidget#widgetList{
+    background-color: transparent; 
+}
+
+QLabel#label_img{
+    background-color: red;
+    border-radius: 45px;
+}
+
+#pushButton_goTo{
+	background:transparent;
+	border: none;
+	color: white;
+}
+
+#pushButton_goTo:hover:!pressed{
+	background:transparent;
+	border: none;
+	border-bottom: 1px solid #717072;;
+	color: #49ebff;
+	border-radius: 0px;
+}
+
+#pushButton_goTo:focus{
+	background:transparent;
+	border: none;
+	border-bottom: 1px solid #717072;;
+	color: #49ebff;
+	border-radius: 0px;
+}
+
+QFrame{
+	background: rgba(70,70,70,0.7);
+}
+
+QPushButton{
+	color: white;
+	background: red;
+	border-radius: 18px;
+}
+
+QPushButton:focus{
+	color:#333;
+	background: #49ebff;
+}
+
+QPushButton:hover{
+	background: #49ebff;
+	color:#333;
+}
+
+QPushButton:checked{
+	background: #49ebff;
+	color:#333;
+}
+
+QPushButton:disabled{
+    background-color: #999;
+}
+
+QPushButton#pushButton_toggle{
+    border-radius: 5px;
+}
+
+QLineEdit{
+	background: transparent;
+	color: grey;
+	border: none;
+	border-bottom: 1px solid grey;
+    icon-size: 100px;
+}
+
+QLineEdit::item {background: transparent;}
+
+QLabel{
+	color: white;
+	background:transparent;
+}
+
+QCheckBox{
+	color: white;
+	background-color: transparent;
+	border-radius: 15px;
+}
+
+QCheckBox:hover{
+	color: white;
+	background-color: transparent;
+	border-radius: 15px;
+}
+
+QCheckBox::indicator:unchecked {
+	color: white;
+    width: 24px;
+	height:24px;
+	image: url(:/imgs/unchecked-64.png);
+}
+
+QCheckBox::indicator:checked {
+	color: white;
+	width: 24px;
+	height:24px;
+	image: url(:/imgs/checked-64.png);
+}
+
+
+QHeaderView {
+	background-color: #333;
+	color: white;
+    font: 18px "Chilanka";
+}
+
+QTableView{
+	font: 18px "Chilanka";
+	color: white;
+	selection-color: #333;
+	selection-background-color: #49ebff;
+    border-radius: 30px;
+}
+
+QTableCornerButton{
+	background-color: #333;
+}
+
+QScrollArea{
+    background-color: transparent;
+}
+
+QScrollBar{
+	background-color: #444;
+}
+
+QComboBox{
+	background-color: red;
+	border-radius: 15px;
+	text-align:left;
+	color: white;
+	selection-background-color: #49ebff;
+}
+
+QComboBox:hover{
+	background-color: #49ebff;
+	border-radius: 15px;
+	color: white;
+	selection-background-color: #49ebff;
+}
+
+QComboBox:drop-down{
+	border: 0px;
+}
+
+QComboBox:down-arrow{
+	padding-right: 16px;
+	image: url(:/imgs/down-arrow-32.png);
+	width: 16px;
+	height: 16px;
+}
+
+QComboBox:on{
+	border: 2px solid #49ebff;
+}
+
+QMessageBox{
+    background-color: #333333;
+}
+
+QMessageBox QLabel {
+    color: #fff;
+}
+
+
+QLineEdit#lineEdit_search{
+	background: rgba(90,90,90,0.7);
+	padding-left: 16px;
+	color: white;
+	border: none;
+	border-radius: 30px;
+}
+
+QWidget#leftSide{
+    background: rgba(70,70,70,0.7);
+    border-radius: 30px;
+}
+
+QWidget#rightSide{
+    background: rgba(70,70,70,0.7);
+    border-radius: 30px;
+}
+
+#pushButton_leftMenu{
+	text-align:left;
+	padding: 6px;
+}
+
+QProgressBar{
+	background-color: rgb(119, 118, 123);
+	color: white;
+	border: none;
+	border-radius: 15px;
+	text-align: center;
+}
+
+QProgressBar:chunk{
+	background: red;
+	border-radius: 15px;
+}
+
+QTextEdit{
+	background: rgba(119, 118, 123, 0.8);
+	color: white;
+	border-radius: 15px;
+}
+
+QSpinBox{
+	border-radius: 5px;
+	color: white;
+	background-color: rgba(90,90,90,0.7);
+}
+
+QSpinBox::up-button{
+    subcontrol-position: right;
+    width: 50px;
+    height: 50px;
+}
+
+QSpinBox::down-button{
+    subcontrol-position: left;
+    width: 50px;
+    height: 50px;
+}
+
+QDateEdit{
+	border-radius: 5px;
+	color: white;
+	background-color: rgba(90,90,90,0.7);
+}
+
+QDateEdit::up-button{
+    subcontrol-position: right;
+    width: 50px;
+    height: 50px;
+}
+
+QDateEdit::down-button{
+    subcontrol-position: left;
+    width: 50px;
+    height: 50px;
+}
+
+QDateTimeEdit{
+	border-radius: 5px;
+	color: white;
+	background-color: rgba(90,90,90,0.7);
+}
+
+QDateTimeEdit::up-button{
+    subcontrol-position: right;
+    width: 50px;
+    height: 50px;
+}
+
+QDateTimeEdit::down-button{
+    subcontrol-position: left;
+    width: 50px;
+    height: 50px;
+}
