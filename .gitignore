@@ -1,3 +1,4 @@
 *.cache
 *.qtc_clangd
 Makefile
+TODO.txt
