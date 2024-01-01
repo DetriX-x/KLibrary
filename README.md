@@ -1,7 +1,7 @@
 # Introduction
 This is an application for abstract library database written on C++/Qt 
 ![plot](./screen1.png)
-pic.1 'Admin GUI'
+pic.1 * Admin GUI *
 # Installation
 Load library_db_backup.sql to your PSQL
 Change PSQL username, name of your database, password in the constructon of mainwindow.cpp
