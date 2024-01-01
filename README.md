@@ -25,6 +25,6 @@ qmake && make
 - Login with *Admin111* username and same password into account
 - Handle customers requests
 - Change the almost all contents of database via GUI
-# TODO
-- Refactor or rewrite client code
-- Fix translaiton bug
+# *TODO:*
+- *Refactor or rewrite client code*
+- *Fix translaiton bug*
