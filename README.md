@@ -4,11 +4,14 @@ This is an application for abstract library database written on C++/Qt
 pic.1 *Admin GUI*
 # Installation
 Load library_db_backup.sql to your PSQL
-Change PSQL username, name of your database, password in the constructon of mainwindow.cpp
-Run qmake && make 
+Change PSQL username, name of your database, password in the beggining of constructor of mainwindow.cpp file
+Run the following command:
+'''
+qmake && make
+'''
 ## Requirements
-PSQL version 16.x (or late)
-QMake version 3.1 (or late) using Qt version 6.x.x and his basic libs
+**PSQL** version 16.x (or late)
+**QMake** version 3.1 (or late) using **Qt** version 6.x.x and his basic libs
 # Use
 ## As a customer
 Create new account, then login and choose any avaliable books you wish
