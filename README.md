@@ -1,7 +1,11 @@
 # Introduction
 This is an application for abstract library database written on C++/Qt 
-![plot](./screen1.png)
-pic.1 *Admin GUI*
+![Authorization](./screen2.png)
+pic.1 *Login*
+![CustometGUI](./screen3.png)
+pic.2 *Customer GUI*
+![AdminGui](./screen1.png)
+pic.3 *Admin GUI*
 # Installation
 1. Load library_db_backup.sql to your PSQL
 2. Change PSQL username, name of your database and 
@@ -26,5 +30,5 @@ qmake && make
 - Handle customers requests
 - Change the almost all contents of database via GUI
 # *TODO:*
-- *Refactor or rewrite client code*
+- *Refactor or rewrite customer code*
 - *Fix translaiton bug*
