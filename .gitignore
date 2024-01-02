@@ -1,5 +1,6 @@
 *.cache
 *.qtc_clangd
+*.swp
 Makefile
 .qmake.stash
-./entities/TODO.txt
+TODO.txt

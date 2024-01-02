@@ -209,11 +209,7 @@ void ClientForm::on_tableView_clicked(const QModelIndex& index)
 
 void ClientForm::selectBookInfo(const QString& bookId) 
 {
-    bar->setValue(0);
-    myGrade->setValue(1);
-    reviews->clear();
-    myReview->clear();
-    pb_takeBook->setEnabled(true);
+    clearBookInfo();
     ui->rightSide->setCurrentWidget(book);
     // find out the rating and reviews
     QSqlQuery query;
@@ -224,16 +220,35 @@ void ClientForm::selectBookInfo(const QString& bookId)
         QMessageBox::critical(this, tr("Error"), tr("Unknown Error... Please restart the program"));
         return;
     }
+    auto [li, sum] = parseReviews(query);
+    double res = (double(sum) / double(query.size())) / 5.0 * 100; // 5 is max rating
+    bar->setValue(int(res));
+    reviews->setText(li.join("\n\n"));
+    // check if has active order
+    pb_takeBook->setEnabled(!hasActiveOrder(bookId.toInt(), userId));
+}
+
+void ClientForm::clearBookInfo() const
+{
+    bar->setValue(0);
+    myGrade->setValue(1);
+    reviews->clear();
+    myReview->clear();
+    pb_takeBook->setEnabled(true);
+}
+
+
+std::pair<QStringList, int> ClientForm::parseReviews(QSqlQuery& query) const
+{
     int sum = 0;
     int curRating;
     int curReaderId;
-    int size = query.size();
-
     QString curReview;
     QString curLogin;
     QString curDateTime;
     QStringList li;
     QString fullReview;
+    int size = query.size();
     for(int i = 0; i < size; ++i)
     { // parsing every query
         query.next();
@@ -264,23 +279,25 @@ void ClientForm::selectBookInfo(const QString& bookId)
         }
         sum += curRating;
     }
-    double res = (double(sum) / double(query.size())) / 5.0 * 100; // 5 is max rating
-    bar->setValue(int(res));
-    reviews->setText(li.join("\n\n"));
-    // check if has active order
-    query.clear();
-    query.prepare("SELECT * FROM orders WHERE book_id = " + bookId +
+    return std::make_pair(li, sum);
+}
+
+bool ClientForm::hasActiveOrder(int bookId, int userId) 
+{
+    QSqlQuery query;
+    query.prepare("SELECT * FROM orders WHERE book_id = " + QString::number(bookId) +
                   " AND reader_id = " + QString::number(userId) +
                   " AND (status = \'active\' OR status = \'Not confirmed\')");
     if(!query.exec())
     {
         QMessageBox::critical(this, tr("Error"), tr("Unknown Error... Please restart the program"));
-        return;
+        return false;
     }
     if(query.size()) // has order 
     {
-        pb_takeBook->setEnabled(false);
+        return true;
     }
+    return false;
 }
 
 void ClientForm::myReview_textChanged()
@@ -403,7 +420,6 @@ void ClientForm::on_lineEdit_search_returnPressed()
         this->search("SELECT * FROM V_orders WHERE reader_id = " + QString::number(userId));
     }
 } 
-
 
 void ClientForm::reset() const 
 {

@@ -9,6 +9,8 @@
 #include <QSpinBox>
 #include <QDateTime>
 
+#include <utility>
+
 namespace reviews_res
 {
     enum
@@ -19,7 +21,8 @@ namespace reviews_res
 }
 
 namespace order_res{
-    enum{
+    enum
+    {
         order_id = 0, book_id = 1, status = 2 
     };
 }
@@ -43,6 +46,13 @@ public:
     void selectBookInfo(const QString& bookId);
 
     void saveReview(int bookId, const QString& text, double rating);
+
+private:
+    void clearBookInfo() const;
+
+    bool hasActiveOrder(int bookId, int userId);
+
+    std::pair<QStringList, int> parseReviews(QSqlQuery& query) const;
 
 protected slots:
     virtual void leftAnimFinished() override;
