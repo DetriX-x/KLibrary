@@ -316,48 +316,21 @@ void ClientForm::myReview_textChanged()
 
 void ClientForm::saveReview(int bookId, const QString& text, double rating)
 {
-    int reviewId;
     QSqlQuery query;
-    query.prepare("SELECT * FROM reviews WHERE book_id = :book_id AND reader_id = :reader_id");
+    query.prepare("INSERT INTO reviews(reader_id, book_id, rating, content, review_datetime) "\
+                    "VALUES(:reader_id, :book_id, :rating, :content, :dt) "\
+                    "ON CONFLICT ON CONSTRAINT unique_reviews_reader_id_book_id "\
+                    "DO "\
+                    "UPDATE SET rating = :rating, content = :content, review_datetime = :dt;");
     query.bindValue(":book_id", bookId);
     query.bindValue(":reader_id", userId);
+    query.bindValue(":rating", rating);
+    query.bindValue(":content", text);
+    query.bindValue(":dt", QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
     if(!query.exec())
     {
         QMessageBox::critical(this, tr("Error"), tr("Unknown Error... Please restart the program"));
         return;
-    }
-    if(query.size())    // exists
-    { // update
-        query.next();
-        reviewId = query.value(0).toInt();
-        query.prepare("UPDATE reviews SET "\
-                "rating = :rating, content = :text, "\
-                "review_datetime = :dt WHERE review_id = :review_id;");
-        query.bindValue(":rating", rating);
-        query.bindValue(":text", text);
-        query.bindValue(":review_id", reviewId);
-        query.bindValue(":dt", QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
-        if(!query.exec())
-        {
-            QMessageBox::critical(this, tr("Error"), tr("Unknown Error... Please restart the program"));
-            return;
-        }
-    }
-    else                // not exists
-    { // insert
-        query.prepare("INSERT INTO reviews "\
-                      "(reader_id, book_id, rating, content, review_datetime) "\
-                      "VALUES (:reader_id, :book_id, :rating, :text, :dt);");
-        query.bindValue(":reader_id", userId);
-        query.bindValue(":book_id", bookId);
-        query.bindValue(":rating", rating);
-        query.bindValue(":text", text);
-        query.bindValue(":dt", QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
-        if(!query.exec())
-        {
-            QMessageBox::critical(this, tr("Error"), tr("Unknown Error... Please restart the program"));
-            return;
-        }
     }
     this->selectBookInfo(QString::number(bookId));
 }
