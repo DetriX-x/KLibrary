@@ -133,6 +133,7 @@ void ClientForm::leftAnimFinished()
 void ClientForm::pb_myBooks_clicked()
 {
     this->clearSorting();
+    ui->lineEdit_search->clear();
     ui->rightSide->setCurrentWidget(empty);
     QSqlQuery query;
     if(isAllBooksMode)
@@ -186,16 +187,16 @@ void ClientForm::setViewHeaders(bool isAllBooksMode) const
 
 void ClientForm::on_tableView_clicked(const QModelIndex& index) 
 {
-    bookId = ui->tableView->model()->data(ui->tableView->model()->index(index.row(),0)).toString();
     if(isAllBooksMode)
     {
+        bookId = ui->tableView->model()->data(ui->tableView->model()->index(index.row(),0)).toString();
         selectBookInfo(bookId);
     }
     else
     {
-        orderId = ui->tableView->model()->data(ui->tableView->model()->index(index.row(), 1)).toString();
-        bookId = ui->tableView->model()->data(ui->tableView->model()->index(index.row(), 2)).toString();
-        QString status = ui->tableView->model()->data(ui->tableView->model()->index(index.row(), 6)).toString();
+        orderId = ui->tableView->model()->data(ui->tableView->model()->index(index.row(), 0)).toString();
+        bookId = ui->tableView->model()->data(ui->tableView->model()->index(index.row(), 3)).toString();
+        QString status = ui->tableView->model()->data(ui->tableView->model()->index(index.row(), 7)).toString();
         if(status == "Not confirmed")
         {
             ui->rightSide->setCurrentWidget(orderInfo);
@@ -313,7 +314,6 @@ void ClientForm::myReview_textChanged()
     }
 }
 
-
 void ClientForm::saveReview(int bookId, const QString& text, double rating)
 {
     QSqlQuery query;
@@ -358,7 +358,6 @@ void ClientForm::pb_takeBook_clicked()
         QMessageBox::critical(this, tr("Error"), tr("Unknown Error... Please restart the program"));
         return;
     }
-    on_lineEdit_search_returnPressed();
     this->selectBookInfo(bookId);
 }
 
@@ -386,7 +385,7 @@ void ClientForm::on_lineEdit_search_returnPressed()
 {
     if(isAllBooksMode)
     {
-        this->search("SELECT * FROM V_books");
+        this->search("SELECT * FROM V_books WHERE quantity <> 0");
     }
     else
     {
