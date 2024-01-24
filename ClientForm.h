@@ -52,6 +52,8 @@ private:
 
     bool hasActiveOrder(int bookId, int userId);
 
+    bool isConfirmedStatus(const QString& bookId, int userId);
+
     std::pair<QStringList, int> parseReviews(QSqlQuery& query) const;
 
 protected slots:

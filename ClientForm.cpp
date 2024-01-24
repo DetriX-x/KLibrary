@@ -225,8 +225,31 @@ void ClientForm::selectBookInfo(const QString& bookId)
     double res = (double(sum) / double(query.size())) / 5.0 * 100; // 5 is max rating
     bar->setValue(int(res));
     reviews->setText(li.join("\n\n"));
+    // check if user has confirmed status on book
+    bool visibility = isConfirmedStatus(bookId, userId);
+    myReview->setEnabled(visibility);
     // check if has active order
     pb_takeBook->setEnabled(!hasActiveOrder(bookId.toInt(), userId));
+}
+
+bool ClientForm::isConfirmedStatus(const QString& bookId, int userId)
+{
+    QSqlQuery query;
+    query.prepare("SELECT status FROM orders WHERE book_id = " + \
+                  bookId + " AND reader_id = " + QString::number(userId));
+    if(!query.exec())
+    {
+        return false;
+    }
+    if(query.size())
+    {
+        query.first(); 
+        if(query.value(0).toString() != "Not confirmed")
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 void ClientForm::clearBookInfo() const
@@ -236,6 +259,7 @@ void ClientForm::clearBookInfo() const
     reviews->clear();
     myReview->clear();
     pb_takeBook->setEnabled(true);
+    myReview->setEnabled(false);
 }
 
 
